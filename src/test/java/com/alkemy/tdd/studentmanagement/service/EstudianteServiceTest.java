@@ -46,7 +46,7 @@ public class EstudianteServiceTest {
         // ARRANGE (Preparar)
         EstudianteService estudianteService = new EstudianteService();
         Estudiante nuevoEstudiante = new Estudiante();
-        nuevoEstudiante.setNombre(""); // Intencionalmente establecemos el nombre como vacío
+        nuevoEstudiante.setNombre(""); // Intencionalmente establecemos el nombre como vací
 
         // ACT & ASSERT (Actuar y Afirmar)
         IllegalArgumentException thrown = assertThrows(IllegalArgumentException.class, () -> {

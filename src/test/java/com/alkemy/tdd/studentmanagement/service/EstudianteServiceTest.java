@@ -56,4 +56,26 @@ public class EstudianteServiceTest {
         assertEquals("El nombre del estudiante es requerido.", thrown.getMessage(),
                 "El mensaje de la excepción debe ser 'El nombre del estudiante es requerido.'");
     }
+
+    @Test
+    void deberiaCrearEstudianteConTodasLasPropiedadesYAsignarId() {
+
+        EstudianteService estudianteService = new EstudianteService();
+        Estudiante nuevoEstudiante = new Estudiante();
+        nuevoEstudiante.setNombre("Ana");
+        nuevoEstudiante.setApellido("Lopez");
+        nuevoEstudiante.setEmail("ana.lopez@example.com");
+        nuevoEstudiante.setFechaNacimiento(LocalDate.of(2000, 5, 15));
+
+        Estudiante estudianteGuardado = estudianteService.crearEstudiante(nuevoEstudiante);
+
+        assertNotNull(estudianteGuardado, "El estudiante guardado no debe ser nulo.");
+        assertNotNull(estudianteGuardado.getId(), "El estudiante guardado debe tener un ID asignado.");
+        // Aquí es donde el test debería fallar si los setters no estuvieran funcionando
+        // o si el servicio hiciera algo inesperado con las propiedades.
+        assertEquals("Ana", estudianteGuardado.getNombre(), "El nombre debe coincidir.");
+        assertEquals("Lopez", estudianteGuardado.getApellido(), "El apellido debe coincidir.");
+        assertEquals("ana.lopez@example.com", estudianteGuardado.getEmail(), "El email debe coincidir.");
+        assertEquals(LocalDate.of(2000, 5, 15), estudianteGuardado.getFechaNacimiento(), "La fecha de nacimiento debe coincidir.");
+    }
 }
